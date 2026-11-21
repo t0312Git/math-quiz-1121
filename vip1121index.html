@@ -6,14 +6,10 @@
   <title>木豆羊專賣店_葵花寶典_指數與對數函數互動測驗</title>
   <meta name="description" content="基礎（易）→ 進階（中）→ 挑戰（難）三階段闖關互動測驗，達 80% 解鎖下一關，支援隨手演算與自動回傳成績。" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="木豆羊專賣店_葵花寶典" />
   <meta property="og:title" content="木豆羊專賣店_葵花寶典_指數與對數函數互動測驗" />
   <meta property="og:description" content="基礎（易）→ 進階（中）→ 挑戰（難）三階段闖關互動測驗，達 80% 解鎖下一關，支援隨手演算與自動回傳成績。" />
   <meta property="og:url" content="https://t0312git.github.io/math-quiz-1121/vip1121index.html" />
-  <meta name="description" content="基礎（易）→ 進階（中）→ 挑戰（難）三階段闖關互動測驗，達 80% 解鎖下一關，支援隨手演算與自動回傳成績。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="木豆羊專賣店_葵花寶典_指數與對數函數互動測驗" />
-  <meta property="og:description" content="基礎（易）→ 進階（中）→ 挑戰（難）三階段闖關互動測驗，達 80% 解鎖下一關，支援隨手演算與自動回傳成績。" />
-  <meta property="og:url" content="https://t0312git.github.io/math-quiz-1121/1121index.html" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -134,7 +130,6 @@
     <main class="max-w-7xl mx-auto w-full px-4 py-5 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6">
       <!-- 左側題目區 (7欄) -->
       <div class="lg:col-span-7 flex flex-col gap-4">
-        <!-- 闖關狀態提示橫幅（未達80%重做錯題 / 已達標解鎖下一關） -->
         <div id="stage-banner" class="hidden rounded-2xl p-4 border shadow-xs flex flex-wrap items-center justify-between gap-3"></div>
 
         <!-- 題號快速跳轉列 -->
@@ -1170,7 +1165,6 @@
         }
       });
 
-      // 橫幅提示
       const curStats = getStageStats(currentStage);
       const banner = document.getElementById("stage-banner");
       if (curStats.isComplete && !curStats.passed) {
@@ -1215,7 +1209,6 @@
       if (!studentProfile.name) {
         setTimeout(() => openStudentModal(), 400);
       }
-      // 自動跳至目前最新解鎖且尚未通關的階段
       if (isStageUnlocked("hard") && !getStageStats("hard").passed) currentStage = "hard";
       else if (isStageUnlocked("medium") && !getStageStats("medium").passed) currentStage = "medium";
       else currentStage = "easy";
@@ -1445,7 +1438,6 @@
       updateStats();
       updateStageUI();
 
-      // 若本階段剛全部完成，且學生已填寫姓名，自動背景同步一次成績至試算表
       const stStats = getStageStats(q.difficulty);
       if (stStats.isComplete && studentProfile.name) {
         const stNameMap = { easy: "第一階段(易)完成", medium: "第二階段(中)完成", hard: "第三階段(難)完成" };
@@ -1491,7 +1483,6 @@
       document.getElementById("wrong-count").textContent = stageWrong;
     }
 
-    // === 學生資料與回報碼 ===
     function openStudentModal() {
       document.getElementById("stu-class").value = studentProfile.cls || "";
       document.getElementById("stu-seat").value = studentProfile.seat || "";
@@ -1615,7 +1606,6 @@
       });
     }
 
-    // === 隱藏式老師後台驗證 ===
     let tapCount = 0, tapTimer = null;
     function handleLogoTap() {
       tapCount++;
@@ -1763,7 +1753,6 @@
       }
     }
 
-    // === 虛擬草稿紙 Canvas ===
     let canvas, ctx, drawing = false, penColor = "#1e293b", lineWidth = 2.2;
     function initCanvas() {
       canvas = document.getElementById("scratchpad");
